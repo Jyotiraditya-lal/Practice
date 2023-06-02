@@ -19,7 +19,7 @@ function display(e){
 
     //Retreving the object from local storage
     let y=JSON.parse(localStorage.getItem("myobj"));*/
-     axios.get("https://crudcrud.com/api/c0ea80e60758467b9dba9c428b805cee/Expenses",myobj).then((response)=>console.log(response)).catch((err)=>console.log(err))
+    axios.get("https://crudcrud.com/api/c0ea80e60758467b9dba9c428b805cee/Expenses",myobj).then((response)=>console.log(response)).catch((err)=>console.log(err))
 
     axios.post("https://crudcrud.com/api/c0ea80e60758467b9dba9c428b805cee/Expenses",myobj).then((response)=>console.log(response)).catch((err)=>console.log(err))
 
@@ -27,7 +27,7 @@ function display(e){
     let ul=document.getElementById("Expenses")
     let li=document.createElement("li");
     li.className="Expenses";
-    li.textContent= y.Expense+"-"+ y.Description+ "-" + y.Category;
+    li.textContent= response.data;
 
     //creating Delete button 
     let d=document.createElement("button");
@@ -58,14 +58,13 @@ function display(e){
     //Delete function
     function Delete()
     {
-       axios.delete("https://crudcrud.com/api/c0ea80e60758467b9dba9c428b805cee/Expenses",myobj).then((response)=>console.log(response)).catch((err)=>console.log(err)))
+        axios.delete("https://crudcrud.com/api/c0ea80e60758467b9dba9c428b805cee/Expenses",myobj).then((response)=>console.log(response)).catch((err)=>console.log(err)))
     }
 
     //Edit function
     function Edit()
     {
-       localStorage.removeItem(myobj);
-       ul.removeChild(li);
+       
        document.getElementById("exp").value= myobj.Expense 
        document.getElementById("des").value= myobj.Description 
        document.getElementById("category").value= myobj.Category
