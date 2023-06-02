@@ -19,6 +19,7 @@ function display(e){
 
     //Retreving the object from local storage
     let y=JSON.parse(localStorage.getItem("myobj"));*/
+     axios.get("https://crudcrud.com/api/c0ea80e60758467b9dba9c428b805cee/Expenses",myobj).then((response)=>console.log(response)).catch((err)=>console.log(err))
 
     axios.post("https://crudcrud.com/api/c0ea80e60758467b9dba9c428b805cee/Expenses",myobj).then((response)=>console.log(response)).catch((err)=>console.log(err))
 
