@@ -58,8 +58,7 @@ function display(e){
     //Delete function
     function Delete()
     {
-        ul.removeChild(li)
-        localStorage.removeItem(myobj);
+       axios.delete("https://crudcrud.com/api/c0ea80e60758467b9dba9c428b805cee/Expenses",myobj).then((response)=>console.log(response)).catch((err)=>console.log(err)))
     }
 
     //Edit function
