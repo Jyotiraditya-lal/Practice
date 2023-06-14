@@ -7,7 +7,7 @@ function display(e){
         "productName": document.getElementById("prod").value,
         "category": document.getElementById("category").value,
     }
-    axios.post("https://crudcrud.com/api/c0ea80e60758467b9dba9c428b805cee/Products",myobj).then((response)=>showProducts0nScreen(response.data))
+    axios.post("https://crudcrud.com/api/c0ea80e60758467b9dba9c428b805cee/Products",myobj)
     window.addEventListener("DOMContentLoaded",()=>{
         axios.get("https://crudcrud.com/api/c0ea80e60758467b9dba9c428b805cee/Products").then((response)=>{
         for(let i=0;i<response.data.length;i++){
@@ -18,9 +18,6 @@ function display(e){
     
 }
 function showProducts0nScreen(Products){
-    let sp=document.getElementById("sp").value;
-    let prod=document.getElementById("prod").value;
-    let category=document.getElementById("category").value;
 
     let d=document.createElement("button");
     d.id="delete-bttn";
@@ -28,16 +25,16 @@ function showProducts0nScreen(Products){
 
     let li=document.createElement("li");
     li.class="Product";
-    li.textContent=sp+"-"+ prod+"-"+ category;
+    li.textContent=Products.sellingPrice+"-"+Products.productName+"-"+Products.category;
     li.appendChild(d);
 
     let liP;
-    if(category=="Electronics")
+    if(Products.category=="Electronics")
     {
         liP=document.getElementById("EI");
         liP.appendChild(li);
     }
-    else if(category=="Food")
+    else if(Products.category=="Food")
     {
         liP=document.getElementById("FI");
         liP.appendChild(li);
